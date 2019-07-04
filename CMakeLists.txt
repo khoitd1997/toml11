@@ -3,14 +3,15 @@ enable_testing()
 
 project(toml11)
 
-set(toml11_VERSION_MAYOR  3)
+set(toml11_VERSION_MAJOR  3)
 set(toml11_VERSION_MINOR  0)
 set(toml11_VERSION_PATCH  0)
 set(toml11_VERSION
-  "${toml11_VERSION_MAYOR}.${toml11_VERSION_MINOR}.${toml11_VERSION_PATCH}-beta"
+  "${toml11_VERSION_MAJOR}.${toml11_VERSION_MINOR}.${toml11_VERSION_PATCH}-beta"
 )
 
-option(toml11_BUILD_TEST "Build toml tests" ON)
+option(toml11_BUILD_TEST "Build toml tests" $<BUILD_INTERFACE:OFF>
+                                            $<INSTALL_INTERFACE:ON>)
 
 include(CheckCXXCompilerFlag)
 if("${CMAKE_VERSION}" VERSION_GREATER 3.1)
